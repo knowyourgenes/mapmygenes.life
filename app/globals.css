@@ -200,6 +200,8 @@ body::before {
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.01em;
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: all 0.4s var(--e-out);
 }
 .nav__cta:hover {
@@ -711,6 +713,7 @@ body::before {
   gap: 10px;
   max-width: 860px;
   margin: 0 auto;
+  padding: 0 18px;
 }
 .chip {
   padding: 9px 18px;
@@ -1572,4 +1575,151 @@ body::before {
   font-family: var(--ff-serif);
   font-size: 22px;
   color: var(--ink-3);
+}
+
+/* ============================================================
+   SMALL PHONES  (≤ 400px, down to 320px)
+   Tighten gutters, stack action rows that would otherwise
+   overflow, and stop long headings forcing horizontal scroll.
+   ============================================================ */
+
+/* Long words in headings must never push the page wider than the viewport. */
+.hero__h1,
+.today__h2,
+.today__answer,
+.reads__title,
+.read__q,
+.rhythm__h2,
+.share__h2,
+.news__h2,
+.read-page__title,
+.read-page__answer,
+.lib-page__title,
+.lib-page__card-q {
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 400px) {
+  /* Gutters: 28px is too greedy below 400px — reclaim ~20px of content width. */
+  .wrap,
+  .hero__inner,
+  .news__inner,
+  .read-page__article,
+  .read-page__related,
+  .lib-page__hero,
+  .lib-page__filters,
+  .lib-page__results {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  /* Nav: keep the brand and CTA on a single line at 320px. */
+  .nav__inner {
+    padding: 14px 18px;
+  }
+  .nav__brand {
+    gap: 9px;
+  }
+  .nav__mark {
+    width: 34px;
+    height: 34px;
+  }
+  .nav__site {
+    font-size: 17px;
+  }
+  .nav__cta {
+    padding: 8px 14px;
+    font-size: 12.5px;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 64px 0 56px;
+  }
+  .hero__h1 {
+    font-size: clamp(30px, 9vw, 40px);
+  }
+  .hero__sub {
+    font-size: 16px;
+  }
+  .hero__actions {
+    gap: 12px;
+  }
+  .hero__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero__trust {
+    gap: 14px 22px;
+  }
+
+  /* Today card: drop horizontal padding and stack the action buttons,
+     which otherwise overflow the ~210px of inner width at 320px. */
+  .today__card {
+    padding: 30px 20px;
+  }
+  .today__label {
+    flex-wrap: wrap;
+  }
+  .today__label-line {
+    display: none;
+  }
+  .today__do {
+    flex-direction: column;
+    gap: 8px;
+    padding: 18px 18px;
+  }
+  .today__footer {
+    gap: 20px;
+  }
+  .today__cta-row {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 10px;
+  }
+  .today__open,
+  .today__share {
+    justify-content: center;
+  }
+
+  /* Read page */
+  .read-page__article {
+    padding-top: 56px;
+  }
+  .read-page__title {
+    font-size: clamp(28px, 8.5vw, 40px);
+  }
+  .read-page__meta {
+    gap: 10px 14px;
+    margin-bottom: 36px;
+  }
+  .read-page__answer {
+    font-size: clamp(19px, 5.5vw, 24px);
+    padding: 22px 20px;
+  }
+  .read-page__body p {
+    font-size: 16px;
+  }
+  .read-page__do {
+    padding: 26px 22px;
+  }
+  .read-page__do-text {
+    font-size: clamp(18px, 5vw, 22px);
+  }
+  /* Stack the share buttons full-width instead of squeezing two pills side by side. */
+  .read-page__share-btn {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  /* Library page */
+  .lib-page__title {
+    font-size: clamp(28px, 9vw, 44px);
+  }
+  .lib-page__results-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
 }
