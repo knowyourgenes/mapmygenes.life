@@ -38,7 +38,7 @@ function pruneOldKeys(currentKey: string): void {
   }
 }
 
-// useSyncExternalStore wiring — reads the stored pick id from localStorage and
+// useSyncExternalStore wiring - reads the stored pick id from localStorage and
 // re-renders on cross-tab `storage` events or our same-tab REFRESH_EVENT.
 function subscribe(callback: () => void): () => void {
   if (typeof window === "undefined") return () => {};
@@ -99,7 +99,7 @@ export function useTodayPick(): Resolved | null {
   const storedId = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   // If localStorage has nothing valid for today, pick a fresh entry and persist
-  // it. This is a write to an external system, not a React setState — the
+  // it. This is a write to an external system, not a React setState - the
   // subscription above will re-render with the new value.
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -116,7 +116,7 @@ export function useTodayPick(): Resolved | null {
       pruneOldKeys(storageKey);
       window.dispatchEvent(new Event(REFRESH_EVENT));
     } catch {
-      // localStorage disabled — fall through; nothing renders.
+      // localStorage disabled - fall through; nothing renders.
     }
   }, [dayContext, storedId]);
 
@@ -146,7 +146,7 @@ export default function TodaySection({ onPick }: TodaySectionProps) {
   }
 
   const { pick, weekdayLabel, longDateLabel } = resolved;
-  const shareText = `${pick.shortAnswer} — via mapmygenes.life`;
+  const shareText = `${pick.shortAnswer} - via mapmygenes.life`;
   const waHref = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
   const openHref = pick.linkSlug ? `/reads/${pick.linkSlug}` : "/library";
 

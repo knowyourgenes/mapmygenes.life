@@ -11,7 +11,7 @@ const NAV_LINKS: { label: string; href: string }[] = [
 ];
 
 export default function SiteNav({ ctaLabel = "Read today's" }: { ctaLabel?: string }) {
-  // Resolves the current day's pick the same way TodaySection does — both
+  // Resolves the current day's pick the same way TodaySection does - both
   // share localStorage, so the CTA always points at the user's actual pick
   // for the day. Falls back to the homepage anchor before hydration.
   const resolved = useTodayPick();
