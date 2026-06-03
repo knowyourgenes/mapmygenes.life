@@ -1600,7 +1600,7 @@ body::before {
 }
 
 @media (max-width: 400px) {
-  /* Gutters: 28px is too greedy below 400px — reclaim ~20px of content width. */
+  /* Gutters: 28px is too greedy below 400px - reclaim ~20px of content width. */
   .wrap,
   .hero__inner,
   .news__inner,
